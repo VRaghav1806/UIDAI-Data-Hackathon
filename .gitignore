@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.env
+*.log
+.DS_Store
+.vscode/
+dashboard/node_modules/
+dashboard/dist/
+output/
+aadhaar_insights_report.md
+data_sample_report.txt
+dashboard_data.json
+*.pyc
+__pycache__/
