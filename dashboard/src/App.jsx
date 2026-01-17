@@ -246,7 +246,7 @@ const App = () => {
                             <span className="stat-label">{t('peakEnrolment')}</span>
                             <span className="stat-value">
                                 {growth_patterns.peak_enrolment.value.toLocaleString()}
-                                {secondaryData && <span style={{ fontSize: '0.6em', color: '#64748b', marginLeft: '8px' }}>{t('vs')} {secondaryData.growth_patterns.peak_enrolment.value.toLocaleString()}</span>}
+                                {secondaryData && <span className="stat-compare">{t('vs')} {secondaryData.growth_patterns.peak_enrolment.value.toLocaleString()}</span>}
                             </span>
                             <span className="stat-meta">In {growth_patterns.peak_enrolment.month}</span>
                         </div>
@@ -259,7 +259,7 @@ const App = () => {
                             <span className="stat-label">{t('updateArea')}</span>
                             <span className="stat-value">
                                 {growth_patterns.peak_bio_category ? growth_patterns.peak_bio_category.replace('bio_age_', '').replace(/_$/, '+').replace('_', '-') : 'Adults'}
-                                {secondaryData && <span style={{ fontSize: '0.6em', color: '#64748b', marginLeft: '8px' }}>{t('vs')} {secondaryData.growth_patterns.peak_bio_category?.replace('bio_age_', '').replace(/_$/, '+').replace('_', '-') || 'N/A'}</span>}
+                                {secondaryData && <span className="stat-compare">{t('vs')} {secondaryData.growth_patterns.peak_bio_category?.replace('bio_age_', '').replace(/_$/, '+').replace('_', '-') || 'N/A'}</span>}
                             </span>
                             <span className="stat-meta">{t('highPriority')}</span>
                         </div>
@@ -272,7 +272,7 @@ const App = () => {
                             <span className="stat-label">{t('demographicFlow')}</span>
                             <span className="stat-value">
                                 {growth_patterns.peak_demo_category ? growth_patterns.peak_demo_category.replace('demo_age_', '').replace(/_$/, '+').replace('_', '-') : 'Mobile'}
-                                {secondaryData && <span style={{ fontSize: '0.6em', color: '#64748b', marginLeft: '8px' }}>{t('vs')} {secondaryData.growth_patterns.peak_demo_category?.replace('demo_age_', '').replace(/_$/, '+').replace('_', '-') || 'N/A'}</span>}
+                                {secondaryData && <span className="stat-compare">{t('vs')} {secondaryData.growth_patterns.peak_demo_category?.replace('demo_age_', '').replace(/_$/, '+').replace('_', '-') || 'N/A'}</span>}
                             </span>
                             <span className="stat-meta">{t('mobilePopulations')}</span>
                         </div>
