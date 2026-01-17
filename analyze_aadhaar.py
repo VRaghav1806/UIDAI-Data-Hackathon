@@ -231,11 +231,11 @@ def main():
                 },
                 {
                     "title": "Update Optimization",
-                    "description": f"Streamline {peak_demo_col.replace('demo_age_', '').replace('_', '+')} demographic updates via mobile vans."
+                    "description": f"Streamline {peak_demo_col.replace('demo_age_', '').replace('_', '-')} demographic updates via mobile vans."
                 },
                 {
                     "title": "Biometric Compliance",
-                    "description": f"Target {peak_bio_col.replace('bio_age_', '').replace('_', '+')} age group for mandatory biometric renewals."
+                    "description": f"Target {peak_bio_col.replace('bio_age_', '').replace('_', '-')} age group for mandatory biometric renewals."
                 }
             ]
 
