@@ -740,7 +740,8 @@ input:checked+.slider:before {
 
     .charts-grid,
     .charts-grid-interactive,
-    .side-by-side {
+    .side-by-side,
+    .prediction-grid {
         grid-template-columns: 1fr;
     }
 
@@ -834,6 +835,15 @@ input:checked+.slider:before {
     .anomaly-value {
         width: 100%;
         text-align: right;
+    }
+
+    .prediction-section {
+        padding: 1.25rem;
+    }
+
+    .prediction-chart-card {
+        padding: 1rem;
+        min-height: 350px;
     }
 }
 
