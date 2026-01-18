@@ -10,7 +10,7 @@
 
 .header {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: minmax(180px, auto) 1fr minmax(280px, auto);
     align-items: center;
     padding: 0.75rem 1.25rem;
     background: rgba(255, 255, 255, 0.03);
@@ -53,18 +53,32 @@
     min-width: 0;
 }
 
+.lang-ta .header-content {
+    min-width: 420px;
+    /* Carefully balanced to fit words without overlap */
+    max-width: 100%;
+    z-index: 1;
+}
+
 .header-content h1 {
     margin: 0;
-    font-size: clamp(1rem, 1.6vw, 1.4rem);
-    line-height: 1.4;
+    font-size: clamp(0.95rem, 1.7vw, 1.5rem);
+    /* Slightly smaller to fit better */
+    line-height: 1.25;
     max-width: 100%;
-    white-space: normal;
+    white-space: pre-line;
     word-spacing: 0.1em;
-    overflow-wrap: break-word;
+    overflow-wrap: normal;
+    word-break: keep-all;
     hyphens: none;
     min-height: auto;
     display: block;
     text-align: center;
+}
+
+.lang-ta .subtitle {
+    white-space: pre-line;
+    line-height: 1.4;
 }
 
 .subtitle {
@@ -612,6 +626,85 @@ input:checked+.slider:before {
     height: 8px;
     border-radius: 4px;
     background: linear-gradient(90deg, #94a3b8, #1e293b);
+}
+
+/* Prediction Section */
+.beta-badge {
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+    font-weight: 700;
+}
+
+.section-subtitle {
+    color: #64748b;
+    font-size: 0.95rem;
+    margin: 0.5rem 0 1.5rem;
+}
+
+.prediction-section {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.5rem;
+}
+
+.prediction-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+}
+
+.prediction-chart-card {
+    padding: 1.5rem;
+    min-height: 400px;
+}
+
+.prediction-insights {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.insight-card {
+    padding: 1.25rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.insight-card:hover {
+    transform: translateX(5px);
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.insight-card h4 {
+    margin: 0;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary);
+}
+
+.insight-card p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #64748b;
+    line-height: 1.4;
+}
+
+.insight-icon {
+    color: #facc15;
 }
 
 .footer {

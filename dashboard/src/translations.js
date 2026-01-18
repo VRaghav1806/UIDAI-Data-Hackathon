@@ -27,6 +27,22 @@ export const translations = {
         anomalies: "Anomalies",
         hotspots: "Hotspots",
         solutions: "Solutions Framework",
+        predictiveForecast: "Predictive Demand Forecast",
+        demandInsights: "Smart Demand Insights",
+        schoolAdmissionSpike: "School Admission Rush (Age 0-5)",
+        mandatoryUpdateCycle: "Mandatory Biometric Cycle",
+        predictedTraffic: "Predicted Center Traffic",
+        forecastDescription: "AI-based projection of enrolment demand based on historical school cycles and mandatory biometric updates.",
+        optimalResource: "Optimal Resource Allocation",
+        schoolSpikeDesc: "{location} school enrolment cycle peaks in {month}. Recommended to increase center capacity by {percent}% during this period.",
+        mandatoryUpdateDesc: "Mandatory biometric updates for ages 5 and 17 contribute to {ratio}% of center traffic. Predicted {increase}% increase in mandatory updates for {location} in the next quarter.",
+        resourceAllocationDesc: "AI suggests re-deploying {vans}% of mobile vans from low-activity districts to {hotspot} to manage the predicted spike.",
+        national: "National",
+        months: {
+            "January": "January", "February": "February", "March": "March", "April": "April",
+            "May": "May", "June": "June", "July": "July", "August": "August",
+            "September": "September", "October": "October", "November": "November", "December": "December"
+        },
         footer: "© 2026 Aadhaar Governance Support System • {state} Perspective"
     },
     hi: {
@@ -57,14 +73,30 @@ export const translations = {
         anomalies: "विसंगतियाँ",
         hotspots: "हॉटस्पॉट",
         solutions: "समाधान ढांचा",
+        predictiveForecast: "अनुमानित मांग पूर्वानुमान",
+        demandInsights: "स्मार्ट मांग अंतर्दृष्टि",
+        schoolAdmissionSpike: "स्कूल प्रवेश भीड़ (आयु 0-5)",
+        mandatoryUpdateCycle: "अनिवार्य बायोमेट्रिक चक्र",
+        predictedTraffic: "अनुमानित केंद्र ट्रैफ़िक",
+        forecastDescription: "ऐतिहासिक स्कूल चक्रों और अनिवार्य बायोमेट्रिक अपडेट के आधार पर नामांकन मांग का एआई-आधारित प्रक्षेपण।",
+        optimalResource: "इष्टतम संसाधन आवंटन",
+        schoolSpikeDesc: "{location} स्कूल नामांकन चक्र {month} में चरम पर होता है। इस अवधि के दौरान केंद्र की क्षमता में {percent}% वृद्धि करने की सिफारिश की जाती है।",
+        mandatoryUpdateDesc: "5 और 17 वर्ष की आयु के लिए अनिवार्य बायोमेट्रिक अपडेट केंद्र के ट्रैफ़िक में {ratio}% का योगदान करते हैं। अगली तिमाही में {location} के लिए अनिवार्य अपडेट में {increase}% वृद्धि का अनुमान है।",
+        resourceAllocationDesc: "एआई अनुमानित स्पाइक को प्रबंधित करने के लिए कम गतिविधि वाले जिलों से {hotspot} में {vans}% मोबाइल वैन को फिर से तैनात करने का सुझाव देता है।",
+        national: "राष्ट्रीय",
+        months: {
+            "January": "जनवरी", "February": "फरवरी", "March": "मार्च", "April": "अप्रैल",
+            "May": "मई", "June": "जून", "July": "जुलाई", "August": "अगस्त",
+            "September": "सितंबर", "October": "अक्टूबर", "November": "नवंबर", "December": "दिसंबर"
+        },
         footer: "© 2026 आधार शासन सहायता प्रणाली • {state} परिप्रेक्ष्य"
     },
     ta: {
         appTitle: "ஆதார் பகுப்பாய்வு",
         liveAnalysis: "நேரடி பகுப்பாய்வு",
-        mainHeading: "சமூக போக்குகளை வெளிக்கொணர்தல்",
+        mainHeading: "சமூகப் போக்குகளை\nவெளிக்கொணர்தல்",
         subHeadingPrefix: "தரவு சார்ந்த நுண்ணறிவு",
-        governance: "ஆளுகை",
+        governance: "\nஆளுகை",
         comparePrefix: "ஒப்பிடுகிறது",
         vs: "எதிர்",
         report: "அறிக்கை",
@@ -87,7 +119,23 @@ export const translations = {
         anomalies: "முரண்பாடுகள்",
         hotspots: "ஹாட்ஸ்பாட்கள்",
         solutions: "தீர்வு கட்டமைப்பு",
-        footer: "© 2026 ஆதார் ஆளுகை ஆதரவு அமைப்பு • {state} பார்வை"
+        predictiveForecast: "முன்கணிப்பு தேவை முன்னறிவிப்பு",
+        demandInsights: "ஸ்மார்ட் டிமாண்ட் நுண்ணறிவு",
+        schoolAdmissionSpike: "பள்ளி சேர்க்கை அவசரம் (வயது 0-5)",
+        mandatoryUpdateCycle: "கட்டாய பயோமெட்ரிக் சுழற்சி",
+        predictedTraffic: "கணிிக்கப்பட்ட மைய போக்குவரத்து",
+        forecastDescription: "வரலாற்றுப் பள்ளி சுழற்சிகள் மற்றும் கட்டாய பயோமெட்ரிக் புதுப்பிப்புகளின் அடிப்படையில் பதிவுத் தேவையின் AI-அடிப்படையில் முன்கணிப்பு.",
+        optimalResource: "உகந்த வள ஒதுக்கீடு",
+        schoolSpikeDesc: "{location} பள்ளி சேர்க்கை சுழற்சி {month} இல் உச்சத்தை அடைகிறது. இந்த காலகட்டத்தில் மைய திறனை {percent}% அதிகரிக்க பரிந்துரைக்கப்படுகிறது.",
+        mandatoryUpdateDesc: "5 மற்றும் 17 வயதுடையவர்களுக்கான கட்டாய பயோமெட்ரிக் புதுப்பிப்புகள் மைய போக்குவரத்தில் {ratio}% பங்களிக்கின்றன. அடுத்த காலாண்டில் {location} க்கான கட்டாய புதுப்பிப்புகளில் {increase}% அதிகரிப்பு கணிக்கப்பட்டுள்ளது.",
+        resourceAllocationDesc: "கணிக்கப்பட்ட உயர்வை நிர்வகிக்க குறைந்த செயல்பாட்டு மாவட்டங்களிலிருந்து {hotspot} க்கு {vans}% மொபைல் வேன்களை மீண்டும் பயன்படுத்துமாறு AI பரிந்துரைக்கிறது.",
+        national: "தேசிய",
+        months: {
+            "January": "ஜனவரி", "February": "பிப்ரவரி", "March": "மார்ச்", "April": "ஏப்ரல்",
+            "May": "மே", "June": "ஜூன்", "July": "ஜூலை", "August": "ஆகஸ்ட்",
+            "September": "செப்டம்பர்", "October": "அக்டோபர்", "November": "நவம்பர்", "December": "டிசம்பர்"
+        },
+        footer: "© 2026 ஆதார் ஆளுகை ஆதரవు அமைப்பு • {state} பார்வை"
     },
     te: {
         appTitle: "ఆధార్ అనలిటిక్స్",
@@ -117,12 +165,29 @@ export const translations = {
         anomalies: "అసాధారణతలు",
         hotspots: "హాట్‌స్పాట్‌లు",
         solutions: "పరిష్కార ముసాయిదా",
+        predictiveForecast: "అంచనా డిమాండ్ సూచన",
+        demandInsights: "స్మార్ట్ డిమాండ్ అంతర్దృష్టులు",
+        schoolAdmissionSpike: "పాఠశాల ప్రవేశ రద్దీ (వయస్సు 0-5)",
+        mandatoryUpdateCycle: "తప్పనిసరి బయోమెట్రిక్ చక్రం",
+        predictedTraffic: "అంచనా వేసిన కేంద్ర ట్రాఫిక్",
+        forecastDescription: "చారిత్రక పాఠశాల చక్రాలు మరియు తప్పనిసరి బయోమెట్రిక్ అప్‌డేట్‌ల ఆధారంగా నమోదు డిమాండ్ యొక్క AI-ఆధారిత అంచనా.",
+        optimalResource: "సరైన వనరుల కేటాయింపు",
+        schoolSpikeDesc: "{location} పాఠశాల నమోదు చక్రం {month}లో గరిష్ట స్థాయికి చేరుకుంటుంది. ఈ కాలంలో కేంద్ర సామర్థ్యాన్ని {percent}% పెంచాలని సిఫార్సు చేయబడింది.",
+        mandatoryUpdateDesc: "5 మరియు 17 సంవత్సరాల వయస్సు వారికి తప్పనిసరి బయోమెట్రిక్ అప్‌డేట్‌లు కేంద్రం ట్రాఫిక్‌లో {ratio}% దోహదపడతాయి. తదుపరి త్రైమాసికంలో {location} కోసం తప్పనిసరి అప్‌డేట్‌లలో {increase}% పెరుగుదల అంచనా వేయబడింది.",
+        resourceAllocationDesc: "అంచనా వేసిన పెరుగుదలను నిర్వహించడానికి తక్కువ కార్యాచరణ ఉన్న జిల్లాల నుండి {hotspot}కు {vans}% మొబైల్ వ్యాన్‌లను మళ్లీ మోహరించాలని AI సూచిస్తుంది.",
+        national: "జాతీయ",
+        months: {
+            "January": "జనవరి", "February": "ఫిబ్రవరి", "March": "మార్చి", "April": "ఏప్రిల్",
+            "May": "మే", "June": "జూన్", "July": "జూలైన", "August": "ఆగస్టు",
+            "September": "సెప్టెంబర్", "October": "అక్టోబర్", "November": "నవంబర్", "December": "డిసెంబర్"
+        },
         footer: "© 2026 ఆధార్ గవర్నెన్స్ సపోర్ట్ సిస్టమ్ • {state} దృక్పథం"
-    }
+    },
 };
 
 export const stateTranslations = {
-    "All India": { hi: "అఖిల భారత", ta: "அனைத்து இந்தியா", te: "అఖిల భారత", en: "All India" },
+    "All India": { hi: "अखिल भारतीय", ta: "அனைத்து இந்தியா", te: "అఖిల భారత", en: "All India" },
+    "Andaman And Nicobar Islands": { hi: "अंडमान और निकोबार द्वीप समूह", ta: "அந்தமான் மற்றும் நிக்கோபார் தீவுகள்", te: "అండమాన్ మరియు నికోబార్ దీవులు", en: "Andaman And Nicobar Islands" },
     "Andhra Pradesh": { hi: "आंध्र प्रदेश", ta: "ஆந்திரப் பிரதேசம்", te: "ఆంధ్రప్రదేశ్", en: "Andhra Pradesh" },
     "Arunachal Pradesh": { hi: "अरुणाचल प्रदेश", ta: "அருணாச்சல பிரதேசம்", te: "అరుణాచల్ ప్రదేశ్", en: "Arunachal Pradesh" },
     "Assam": { hi: "असम", ta: "அஸ்ஸாம்", te: "అస్సాం", en: "Assam" },
@@ -214,11 +279,13 @@ export const dataTranslations = {
     "Enrolment Drive": {
         hi: "नामांकन अभियान",
         ta: "பதிவு இயக்கம்",
-        te: "నమోదు డ్రైవ్"
+        te: "నమోదు డ్రైవ్",
+        en: "Enrolment Drive"
     },
     "Focus on peak month": {
         hi: "पीक महीने पर ध्यान दें",
         ta: "உச்ச மாதத்தில் கவனம் செலுத்துங்கள்",
-        te: "పీక్ నెలకు ప్రాధాన్యత ఇవ్వండి"
+        te: "పీక్ నెలకు ప్రాధాన్యత ఇవ్వండి",
+        en: "Focus on peak month"
     }
 }

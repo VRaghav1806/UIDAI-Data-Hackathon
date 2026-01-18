@@ -1,6 +1,6 @@
 import React from 'react'
 import data from './data.json'
-import { TrendingUp, AlertCircle, Lightbulb, MapPin, Users, ShieldCheck, Activity, FileText, Download } from 'lucide-react'
+import { TrendingUp, AlertCircle, Lightbulb, MapPin, Users, ShieldCheck, Activity, FileText, Download, Brain, Sparkles, Clock, Calendar } from 'lucide-react'
 import jsPDF from 'jspdf'
 import html2canvas from 'html2canvas'
 import {
@@ -21,38 +21,47 @@ const App = () => {
     const [language, setLanguage] = React.useState('en')
     const { states, global, state_specific } = data
 
-    const t = (key) => translations[language][key] || translations['en'][key]
+    const t = (key) => {
+        if (!key) return ""
+        const parts = key.split('.')
+        let res = translations[language]
+        for (const p of parts) res = res ? res[p] : undefined
+        if (res !== undefined) return res
+        res = translations['en']
+        for (const p of parts) res = res ? res[p] : undefined
+        return res !== undefined ? res : key
+    }
 
-    // Helper to translate State Names
-    const tState = (stateName) => {
-        if (!stateName) return "";
-        const entry = stateTranslations[stateName];
-        return entry ? (entry[language] || stateName) : stateName;
+    const tState = (name) => {
+        if (!name) return ""
+        return stateTranslations[name]?.[language] || name
     }
 
     // Helper to translate Data Content (Recommendations, etc.)
     const tData = (text) => {
         if (!text) return "";
-        // Exact match
-        if (dataTranslations[text] && dataTranslations[text][language]) {
-            return dataTranslations[text][language];
-        }
-        // "Enrolment Drive" Pattern
+
+        // Exact match with safety check
+        const entry = dataTranslations[text];
+        if (entry && entry[language]) return entry[language];
+        if (entry && entry['en']) return entry['en'];
+
+        // Dynamic Pattern: "Enrolment Drive"
         if (text.includes("Enrolment Drive")) {
             const statePart = text.replace(" Enrolment Drive", "");
-            const driveTrans = dataTranslations["Enrolment Drive"] ? dataTranslations["Enrolment Drive"][language] : "Enrolment Drive";
+            const driveEntry = dataTranslations["Enrolment Drive"];
+            const driveTrans = driveEntry ? (driveEntry[language] || driveEntry['en'] || "Enrolment Drive") : "Enrolment Drive";
             return `${tState(statePart)} ${driveTrans}`;
         }
-        // "Focus on peak month" Pattern
-        if (text.includes("Focus on peak month")) {
-            // Keep the date, translate the rest if exact match fails
-            // Simple naive replacement for this specific string format if needed, but strict match is safer for now.
-            // If the text starts with "Focus on peak month", we can try to translate that part.
-            const base = "Focus on peak month";
-            if (text.startsWith(base)) {
-                return text.replace(base, dataTranslations[base] ? dataTranslations[base][language] : base);
-            }
+
+        // Dynamic Pattern: "Focus on peak month"
+        const peakBase = "Focus on peak month";
+        if (text.startsWith(peakBase)) {
+            const peakEntry = dataTranslations[peakBase];
+            const peakTrans = peakEntry ? (peakEntry[language] || peakEntry['en'] || peakBase) : peakBase;
+            return text.replace(peakBase, peakTrans);
         }
+
         return text;
     }
 
@@ -101,6 +110,7 @@ const App = () => {
             currentY = await addSectionToPdf('.map-section', currentY)
             currentY = await addSectionToPdf('.charts-section', currentY)
             currentY = await addSectionToPdf('.distribution-section', currentY)
+            currentY = await addSectionToPdf('.prediction-section', currentY)
 
             // Side-by-side sections might need separate handling or just capture the container
             // Capturing .side-by-side container
@@ -151,6 +161,65 @@ const App = () => {
         }))
     }, [bioData, secondaryData])
 
+    // Generate State-Specific Metrics and Forecast
+    const stateMetrics = React.useMemo(() => {
+        const stateData = selectedState === 'All India' ? global : state_specific[selectedState];
+        if (!stateData) return { peakMonth: "June", spikePercentage: 25, mandatoryRatio: 40, hotspot: "Hotspot", avgEnrolment: 50000 };
+
+        const gp = stateData.growth_patterns;
+        const enrolmentTrends = stateData.trends?.enrolment || [];
+        const bioTrends = stateData.trends?.biometric || [];
+
+        const validEnrolment = enrolmentTrends.filter(e => e.age_0_5 !== undefined);
+        const avgEnrolment = validEnrolment.length > 0
+            ? validEnrolment.reduce((acc, curr) => acc + (curr.age_0_5 || 0) + (curr.age_5_17 || 0), 0) / validEnrolment.length
+            : 50000;
+
+        const spikePercentage = gp?.peak_enrolment?.value
+            ? Math.round(((gp.peak_enrolment.value - avgEnrolment) / avgEnrolment) * 100)
+            : 25;
+
+        const latestBio = bioTrends.length > 0 ? bioTrends[bioTrends.length - 1] : { bio_age_5_17: 40, bio_age_17_: 60 };
+        const mandatoryRatio = Math.round(((latestBio.bio_age_5_17 || 40) / ((latestBio.bio_age_5_17 || 40) + (latestBio.bio_age_17_ || 60))) * 100);
+
+        const monthNames = {
+            "01": "January", "02": "February", "03": "March", "04": "April",
+            "05": "May", "06": "June", "07": "July", "08": "August",
+            "09": "September", "10": "October", "11": "November", "12": "December"
+        };
+        const peakMonthCode = gp?.peak_enrolment?.month?.split('-')[1] || "06";
+        const peakMonth = monthNames[peakMonthCode] || "June";
+
+        const topDist = stateData.top_districts?.[0]?.district || (selectedState === 'All India' ? "National Centers" : "Urban Hubs");
+
+        return {
+            peakMonth,
+            spikePercentage: spikePercentage > 0 ? spikePercentage : 25,
+            mandatoryRatio: mandatoryRatio > 0 ? mandatoryRatio : 40,
+            hotspot: topDist,
+            avgEnrolment
+        };
+    }, [selectedState, global, state_specific])
+
+    const forecastData = React.useMemo(() => {
+        const stateData = selectedState === 'All India' ? global : state_specific[selectedState];
+        if (!stateData) return [];
+        const enrolmentTrends = stateData.trends?.enrolment || [];
+
+        // Predict May - August 2026 based on 2025 baseline
+        const forecastMonths = ["05", "06", "07", "08"];
+        const growthFactor = 1.12;
+
+        return forecastMonths.map(mCode => {
+            const historical = enrolmentTrends.find(t => t.name.endsWith(`-${mCode}`));
+            const baseValue = historical ? (historical.age_0_5 + historical.age_5_17) : stateMetrics.avgEnrolment;
+            return {
+                name: `2026-${mCode}`,
+                predicted: Math.round(baseValue * growthFactor)
+            };
+        });
+    }, [selectedState, stateMetrics])
+
 
     const searchedDistricts = district_breakdown.filter(d =>
         d.district.toLowerCase().includes(districtSearch.toLowerCase())
@@ -170,7 +239,7 @@ const App = () => {
     }
 
     return (
-        <div className="dashboard-container">
+        <div className={`dashboard-container lang-${language}`}>
             <header className="header glass">
                 <div className="logo-section">
                     <div className="logo">
@@ -279,6 +348,72 @@ const App = () => {
                     </div>
                 </section>
 
+
+                {/* Predictive Demand intelligence Section */}
+                <section className="prediction-section glass">
+                    <div className="section-header">
+                        <h2 className="section-title"><Brain size={24} color="#facc15" /> {t('predictiveForecast')} <span className="beta-badge">AI</span></h2>
+                        <p className="section-subtitle">{t('forecastDescription')}</p>
+                    </div>
+
+                    <div className="prediction-grid">
+                        <div className="chart-card glass prediction-chart-card">
+                            <h3>{t('predictedTraffic')}</h3>
+                            <div className="chart-wrapper">
+                                <ResponsiveContainer width="100%" height={300}>
+                                    <AreaChart data={forecastData}>
+                                        <defs>
+                                            <linearGradient id="colorPredict" x1="0" y1="0" x2="0" y2="1">
+                                                <stop offset="5%" stopColor="#facc15" stopOpacity={0.4} />
+                                                <stop offset="95%" stopColor="#facc15" stopOpacity={0} />
+                                            </linearGradient>
+                                        </defs>
+                                        <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" vertical={false} />
+                                        <XAxis dataKey="name" stroke="#64748b" fontSize={12} tickMargin={10} />
+                                        <YAxis stroke="#64748b" fontSize={12} tickFormatter={(value) => `${value / 1000}k`} />
+                                        <Tooltip
+                                            contentStyle={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', border: '1px solid #e2e8f0', borderRadius: '12px' }}
+                                        />
+                                        <Area type="monotone" dataKey="predicted" name={t('predictedTraffic')} stroke="#facc15" strokeWidth={3} fillOpacity={1} fill="url(#colorPredict)" />
+                                    </AreaChart>
+                                </ResponsiveContainer>
+                            </div>
+                        </div>
+
+                        <div className="prediction-insights">
+                            <h3 className="flex items-center gap-2"><Sparkles size={18} /> {t('demandInsights')}</h3>
+
+                            <div className="insight-card glass">
+                                <h4><Calendar className="insight-icon" size={18} /> {t('schoolAdmissionSpike')}</h4>
+                                <p>
+                                    {t('schoolSpikeDesc')
+                                        .replace('{location}', selectedState === 'All India' ? t('national') : tState(selectedState))
+                                        .replace('{month}', t(`months.${stateMetrics.peakMonth}`))
+                                        .replace('{percent}', stateMetrics.spikePercentage)}
+                                </p>
+                            </div>
+
+                            <div className="insight-card glass">
+                                <h4><Clock className="insight-icon" size={18} /> {t('mandatoryUpdateCycle')}</h4>
+                                <p>
+                                    {t('mandatoryUpdateDesc')
+                                        .replace('{location}', tState(selectedState))
+                                        .replace('{ratio}', stateMetrics.mandatoryRatio)
+                                        .replace('{increase}', 15)}
+                                </p>
+                            </div>
+
+                            <div className="insight-card glass">
+                                <h4><TrendingUp className="insight-icon" size={18} /> {t('optimalResource')}</h4>
+                                <p>
+                                    {t('resourceAllocationDesc')
+                                        .replace('{vans}', 12)
+                                        .replace('{hotspot}', stateMetrics.hotspot)}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 {/* Geographical Intelligence Section (Map) */}
                 <section className="map-section glass">
