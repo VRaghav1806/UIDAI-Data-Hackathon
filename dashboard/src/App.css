@@ -1132,3 +1132,126 @@ input:checked+.slider:before {
 .stat-value.high {
     color: #e11d48;
 }
+
+/* Mobile Responsiveness Rules */
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+
+    .view-toggle-row {
+        margin: 0 0 1rem;
+        padding: 0;
+    }
+
+    .view-toggle-bar {
+        width: 100%;
+        border-radius: 12px;
+    }
+
+    .view-toggle-btn {
+        flex: 1;
+        justify-content: center;
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    /* Infrastructure Planning Mobile */
+    .infrastructure-header-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .stat-card.model-focus,
+    .stat-card.gaps-found {
+        padding: 1.25rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        gap: 0.75rem;
+    }
+
+    .stat-title {
+        font-size: 1.5rem;
+    }
+
+    .stat-icon-wrapper.loc,
+    .stat-icon-wrapper.pulse {
+        width: 48px;
+        height: 48px;
+    }
+
+    .expansion-section {
+        padding: 1rem;
+        border-radius: 16px;
+    }
+
+    .priority-table-header {
+        display: none;
+        /* Hide header on mobile cards */
+    }
+
+    .priority-list {
+        margin-top: 0;
+    }
+
+    .priority-item-card {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        padding: 1.25rem;
+        border-radius: 16px;
+        position: relative;
+    }
+
+    .priority-item-card .pin-code {
+        font-size: 1.25rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        padding-bottom: 0.5rem;
+        display: block;
+    }
+
+    .metrics-group {
+        background: rgba(30, 41, 59, 0.02);
+        padding: 1rem;
+        border-radius: 12px;
+        width: 100%;
+    }
+
+    .metric-row {
+        gap: 0.5rem;
+    }
+
+    .metric-label {
+        width: 55px;
+        font-size: 0.75rem;
+    }
+
+    .metric-bar-container {
+        height: 5px;
+    }
+
+    .score-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+    }
+
+    .recommendation-link {
+        justify-content: center;
+        width: 100%;
+        padding: 0.75rem;
+        background: rgba(244, 63, 94, 0.05);
+        border-radius: 8px;
+        border: 1px solid rgba(244, 63, 94, 0.1);
+    }
+
+    .main-grid {
+        gap: 1.5rem;
+    }
+
+    .stats-row {
+        grid-template-columns: 1fr;
+    }
+}
