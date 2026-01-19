@@ -25,9 +25,9 @@ const InfrastructurePlanning = ({ selectedState, translations, tState, tData }) 
                         <MapPin size={24} />
                     </div>
                     <div className="stat-info">
-                        <span className="stat-label">{translations.infraModelFocus}</span>
+                        <span className="stat-label">Model Focus</span>
                         <h3 className="stat-title">{tState(selectedState)}</h3>
-                        <span className="stat-meta">{translations.infraPinLevel}</span>
+                        <span className="stat-meta">PIN-Level Analysis</span>
                     </div>
                 </div>
                 <div className="stat-card glass gaps-found">
@@ -35,9 +35,9 @@ const InfrastructurePlanning = ({ selectedState, translations, tState, tData }) 
                         <Activity size={24} />
                     </div>
                     <div className="stat-info">
-                        <span className="stat-label">{translations.infraCriticalGaps}</span>
+                        <span className="stat-label">Critical Gaps Found</span>
                         <h3 className="stat-title">{pinData.length}</h3>
-                        <span className="stat-meta">{translations.infraZonesReq}</span>
+                        <span className="stat-meta">Zones requiring centers</span>
                     </div>
                 </div>
             </div>
@@ -47,18 +47,18 @@ const InfrastructurePlanning = ({ selectedState, translations, tState, tData }) 
                     <div className="title-group">
                         <Activity className="section-icon" size={24} />
                         <div>
-                            <h2 className="section-title">{translations.infraExpansionTitle}</h2>
-                            <p className="section-subtitle">{translations.infraExpansionSub}</p>
+                            <h2 className="section-title">High-Priority Expansion Zones</h2>
+                            <p className="section-subtitle">Ranking based on Demand-Supply Ratio, Density, and Access Difficulty</p>
                         </div>
                     </div>
                 </div>
 
                 <div className="priority-table-header">
-                    <span>{translations.infraPinCode}</span>
-                    <span>{translations.infraDistState}</span>
-                    <span>{translations.infraNeedScore}</span>
-                    <span>{translations.infraMetricsBreakdown}</span>
-                    <span>{translations.infraRecommendation}</span>
+                    <span>PIN Code</span>
+                    <span>District / State</span>
+                    <span>Need Score</span>
+                    <span>Metrics Breakdown</span>
+                    <span>Recommendation</span>
                 </div>
 
                 <div className="priority-list">
@@ -66,7 +66,7 @@ const InfrastructurePlanning = ({ selectedState, translations, tState, tData }) 
                         <div key={`${pin.pincode}-${idx}`} className="priority-item-card glass">
                             <span className="pin-code">{pin.pincode}</span>
                             <div className="district-info">
-                                <strong>{pin.district && pin.district !== 0 ? pin.district : translations.infraIndustrialCluster}</strong>
+                                <strong>{pin.district && pin.district !== 0 ? pin.district : 'Industrial Cluster'}</strong>
                                 <span className="state-label">{pin.state && pin.state !== 0 ? tState(pin.state) : tState(selectedState)}</span>
                             </div>
                             <div className="score-badge">
@@ -74,14 +74,14 @@ const InfrastructurePlanning = ({ selectedState, translations, tState, tData }) 
                             </div>
                             <div className="metrics-group">
                                 <div className="metric-row">
-                                    <span className="metric-label">{translations.infraGapDS}</span>
+                                    <span className="metric-label">Gap D/S</span>
                                     <div className="metric-bar-container">
                                         <div className="metric-bar demand" style={{ width: `${Math.min((pin.demand_supply_ratio / 2) * 100, 100)}%` }}></div>
                                     </div>
                                     <span className="metric-value">{pin.demand_supply_ratio}x</span>
                                 </div>
                                 <div className="metric-row">
-                                    <span className="metric-label">{translations.infraGrowth}</span>
+                                    <span className="metric-label">Growth</span>
                                     <div className="metric-bar-container">
                                         <div className="metric-bar growth" style={{ width: `${Math.min(pin.growth, 100)}%` }}></div>
                                     </div>
@@ -89,12 +89,12 @@ const InfrastructurePlanning = ({ selectedState, translations, tState, tData }) 
                                 </div>
                             </div>
                             <button className="recommendation-link">
-                                {translations.infraEstablishCenter} <ChevronRight size={16} />
+                                Establish Permanent Center <ChevronRight size={16} />
                             </button>
                         </div>
                     )) : (
                         <div className="no-data" style={{ padding: '3rem', textAlign: 'center', opacity: 0.6 }}>
-                            {translations.infraNoData.replace('{state}', tState(selectedState))}
+                            No high-priority expansion zones identified for {tState(selectedState)} in the current model run.
                         </div>
                     )}
                 </div>

@@ -43,23 +43,7 @@ export const translations = {
             "May": "May", "June": "June", "July": "July", "August": "August",
             "September": "September", "October": "October", "November": "November", "December": "December"
         },
-        footer: "© 2026 Aadhaar Governance Support System • {state} Perspective",
-        infraModelFocus: "Model Focus",
-        infraPinLevel: "PIN-Level Analysis",
-        infraCriticalGaps: "Critical Gaps Found",
-        infraZonesReq: "Zones requiring centers",
-        infraExpansionTitle: "High-Priority Expansion Zones",
-        infraExpansionSub: "Ranking based on Demand-Supply Ratio, Density, and Access Difficulty",
-        infraPinCode: "PIN Code",
-        infraDistState: "District / State",
-        infraNeedScore: "Need Score",
-        infraMetricsBreakdown: "Metrics Breakdown",
-        infraRecommendation: "Recommendation",
-        infraGapDS: "Gap D/S",
-        infraGrowth: "Growth",
-        infraEstablishCenter: "Establish Permanent Center",
-        infraNoData: "No high-priority expansion zones identified for {state} in the current model run.",
-        infraIndustrialCluster: "Industrial Cluster"
+        footer: "© 2026 Aadhaar Governance Support System • {state} Perspective"
     },
     hi: {
         appTitle: "आधार एनालिटिक्स",
@@ -105,23 +89,7 @@ export const translations = {
             "May": "मई", "June": "जून", "July": "जुलाई", "August": "अगस्त",
             "September": "सितंबर", "October": "अक्टूबर", "November": "नवंबर", "December": "दिसंबर"
         },
-        footer: "© 2026 आधार शासन सहायता प्रणाली • {state} परिप्रेक्ष्य",
-        infraModelFocus: "मॉडल फोकस",
-        infraPinLevel: "पिन-स्तर विश्लेषण",
-        infraCriticalGaps: "महत्वपूर्ण अंतराल मिले",
-        infraZonesReq: "केंद्रों की आवश्यकता वाले क्षेत्र",
-        infraExpansionTitle: "उच्च-प्राथमिकता विस्तार क्षेत्र",
-        infraExpansionSub: "मांग-आपूर्ति अनुपात, घनत्व और पहुंच की कठिनाई के आधार पर रैंकिंग",
-        infraPinCode: "पिन कोड",
-        infraDistState: "जिला / राज्य",
-        infraNeedScore: "आवश्यकता स्कोर",
-        infraMetricsBreakdown: "मेट्रिक्स ब्रेकडाउन",
-        infraRecommendation: "सिफारिश",
-        infraGapDS: "अंतराल D/S",
-        infraGrowth: "वृद्धि",
-        infraEstablishCenter: "स्थायी केंद्र स्थापित करें",
-        infraNoData: "वर्तमान मॉडल रन में {state} के लिए किसी भी उच्च-प्राथमिकता विस्तार क्षेत्र की पहचान नहीं की गई है।",
-        infraIndustrialCluster: "औद्योगिक क्लस्टर"
+        footer: "© 2026 आधार शासन सहायता प्रणाली • {state} परिप्रेक्ष्य"
     },
     ta: {
         appTitle: "ஆதார் பகுப்பாய்வு",
@@ -167,23 +135,7 @@ export const translations = {
             "May": "மே", "June": "ஜூன்", "July": "ஜூலை", "August": "ஆகஸ்ட்",
             "September": "செப்டம்பர்", "October": "அக்டோபர்", "November": "நவம்பர்", "December": "டிசம்பர்"
         },
-        footer: "© 2026 ஆதார் ஆளுகை ஆதரவு அமைப்பு • {state} பார்வை",
-        infraModelFocus: "மாதிரி கவனம்",
-        infraPinLevel: "PIN-நிலை பகுப்பாய்வு",
-        infraCriticalGaps: "முக்கியமான இடைவெளிகள் கண்டறியப்பட்டன",
-        infraZonesReq: "மையங்கள் தேவைப்படும் மண்டலங்கள்",
-        infraExpansionTitle: "முன்னணி விரிவாக்க மண்டலங்கள்",
-        infraExpansionSub: "தேவை-வழங்கல் விகிதம், அடர்த்தி மற்றும் அணுகல் சிரமத்தின் அடிப்படையில் தரவரிசை",
-        infraPinCode: "பின்குறியீடு",
-        infraDistState: "மாவட்டம் / மாநிலம்",
-        infraNeedScore: "தேவை மதிப்பெண்",
-        infraMetricsBreakdown: "அளவீடுகள் முறிவு",
-        infraRecommendation: "பரிந்துரை",
-        infraGapDS: "இடைவெளி D/S",
-        infraGrowth: "வளர்ச்சி",
-        infraEstablishCenter: "நிரந்தர மையத்தை நிறுவுங்கள்",
-        infraNoData: "தற்போதைய மாதிரி ஓட்டத்தில் {state} க்கான முன்னுரிமை விரிவாக்க மண்டலங்கள் எதுவும் அடையாளம் காணப்படவில்லை.",
-        infraIndustrialCluster: "தொழிற்துறை கிளஸ்டர்"
+        footer: "© 2026 ஆதார் ஆளுகை ஆதரవు அமைப்பு • {state} பார்வை"
     },
     te: {
         appTitle: "ఆధార్ అనలిటిక్స్",
@@ -229,23 +181,7 @@ export const translations = {
             "May": "మే", "June": "జూన్", "July": "జూలైన", "August": "ఆగస్టు",
             "September": "సెప్టెంబర్", "October": "అక్టోబర్", "November": "నవంబర్", "December": "డిసెంబర్"
         },
-        footer: "© 2026 ఆధార్ గవర్నెన్స్ సపోర్ట్ సిస్టమ్ • {state} దృక్పథం",
-        infraModelFocus: "మోడల్ ఫోకస్",
-        infraPinLevel: "పిన్-స్థాయి విశ్లేషణ",
-        infraCriticalGaps: "క్లిష్టమైన ఖాళీలు కనుగొనబడ్డాయి",
-        infraZonesReq: "కేంద్రాలు అవసరమయ్యే మండలాలు",
-        infraExpansionTitle: "అధిక ప్రాధాన్యత విస్తరణ మండలాలు",
-        infraExpansionSub: "డిమాండ్-సరఫరా నిష్పత్తి, సాంద్రత మరియు ప్రాప్యత ఇబ్బంది ఆధారంగా ర్యాంకింగ్",
-        infraPinCode: "పిన్ కోడ్",
-        infraDistState: "జిల్లా / రాష్ట్రం",
-        infraNeedScore: "అవసర స్కోరు",
-        infraMetricsBreakdown: "మెట్రిక్స్ విశ్లేషణ",
-        infraRecommendation: "సిఫార్సు",
-        infraGapDS: "గ్యాప్ D/S",
-        infraGrowth: "వృద్ధి",
-        infraEstablishCenter: "శాశ్వత కేంద్రాన్ని ఏర్పాటు చేయండి",
-        infraNoData: "ప్రస్తుత మోడల్ రన్ లో {state} కోసం ఎటువంటి అధిక ప్రాధాన్యత విస్తరణ మండలాలు గుర్తించబడలేదు.",
-        infraIndustrialCluster: "పారిశ్రామిక క్లస్టర్"
+        footer: "© 2026 ఆధార్ గవర్నెన్స్ సపోర్ట్ సిస్టమ్ • {state} దృక్పథం"
     },
 };
 
